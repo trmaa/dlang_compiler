@@ -10,6 +10,38 @@ int main(int argc, char** argv) {
 			fprintf(fptr, "%s ", include);
 			continue;
 		}
+		if (strstr(include, "(") != NULL) {
+			char* paren_pos = strchr(include, '(');
+			if (paren_pos != NULL) {
+				int func_len = paren_pos - include;
+				fprintf(fptr, "%.*s(\n", func_len, include);
+
+				if (strstr(paren_pos+1, "*") == NULL) {
+					fprintf(fptr, "%s \n", paren_pos+1);
+					continue;
+				}
+				if (strstr(paren_pos+1, "&") == NULL) {
+					fprintf(fptr, "%s \n", paren_pos+1);
+					continue;
+				}
+			}
+		}
+		if (strstr(include, "*") != NULL) {
+			char* paren_pos = strchr(include, '*');
+			if (paren_pos != NULL) {
+				int func_len = paren_pos - include;
+				fprintf(fptr, "%.*s * %s\n", func_len, include, paren_pos + 1);
+				continue;
+			}
+		}
+		if (strstr(include, "&") != NULL) {
+			char* paren_pos = strchr(include, '&');
+			if (paren_pos != NULL) {
+				int func_len = paren_pos - include;
+				fprintf(fptr, "%.*s & %s\n", func_len, include, paren_pos + 1);
+				continue;
+			}
+			}
 		if (strcmp(include, "inc")) {
 			fprintf(fptr, "%s\n", include);
 			continue;

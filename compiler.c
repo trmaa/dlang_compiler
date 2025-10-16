@@ -21,7 +21,7 @@ void gen_c(char* out) {
 			continue;
 		}
 		if (!strcmp(token, "let")) {
-			fprintf(fptr, "float\n");
+			fprintf(fptr, "int\n");
 			continue;
 		}
 		if (!strcmp(token, "us")) {
@@ -30,6 +30,10 @@ void gen_c(char* out) {
 		}
 		if (!strcmp(token, "b8")) {
 			fprintf(fptr, "char\n");
+			continue;
+		}
+		if (!strcmp(token, "b16")) {
+			fprintf(fptr, "short\n");
 			continue;
 		}
 		if (!strcmp(token, "b32")) {
@@ -46,6 +50,14 @@ void gen_c(char* out) {
 		}
 		if (!strcmp(token, "b64d")) {
 			fprintf(fptr, "double\n");
+			continue;
+		}
+		if (!strcmp(token, "type")) {
+			fprintf(fptr, "typedef\n");
+			continue;
+		}
+		if (!strcmp(token, "st")) {
+			fprintf(fptr, "struct\n");
 			continue;
 		}
 		if (strstr(token, "std:") == token) {
@@ -66,7 +78,7 @@ void gen_c(char* out) {
 }
 
 int main(int argc, char** argv) {
-	system("mkdir -p build/ && rm -rf build/*");
+	system("mkdir -p build/");
 
 	gen_c("build/main.c");
 

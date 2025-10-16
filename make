@@ -7,7 +7,6 @@ function install() {
 }
 
 function build() {
-	gcc dlang.c -o dlang
 	gcc compiler.c -o dcompiler
 	gcc tokenizer.c -o dtokenizer
 }
