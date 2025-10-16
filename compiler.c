@@ -20,6 +20,10 @@ void gen_c(char* out) {
 			fprintf(fptr, "void\n");
 			continue;
 		}
+		if (!strcmp(token, "let")) {
+			fprintf(fptr, "int\n");
+			continue;
+		}
 		if (!strcmp(token, "us")) {
 			fprintf(fptr, "unsigned\n");
 			continue;
