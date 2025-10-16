@@ -21,7 +21,7 @@ void gen_c(char* out) {
 			continue;
 		}
 		if (!strcmp(token, "let")) {
-			fprintf(fptr, "int\n");
+			fprintf(fptr, "float\n");
 			continue;
 		}
 		if (!strcmp(token, "us")) {
@@ -75,6 +75,6 @@ int main(int argc, char** argv) {
 	system("gcc -c build/main.s -o build/main.o");
 
 	char command[256];
-	snprintf(command, sizeof(command), "gcc build/main.o -o %s", argv[1]);
+	snprintf(command, sizeof(command), "gcc build/main.o -o %s -lm", argv[1]);
 	system(command);
 }
