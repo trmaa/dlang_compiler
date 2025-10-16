@@ -1,7 +1,7 @@
 cin <math.h>
 cin <stdio.h>
 
-fn reverse(int* n) {
+fn reverse(b32* n) {
 	b32 num = *n / 10;
 	b32 size = 0;
 
@@ -16,15 +16,17 @@ fn reverse(int* n) {
 
 	b32 i = size;
 	while (num > 0) {
-		*n += (num % 10) * std:pow(10, i);
+		*n += (num % 10) * pow(10, i);
 		num /= 10;
 		i--;
 	}
 }
 
-b32 std:main() {
-	b32 n = 1234;
+b32 main() {
+	b32 n;
+	scanf("%d", &n);
+
 	reverse(&n);
 
-	std:printf("%d\n", n);
+	printf("%d\n", n);
 }
